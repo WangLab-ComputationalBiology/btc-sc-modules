@@ -1,5 +1,5 @@
 process SAMPLESHEET_CHECK {
-    tag "$samplesheet"
+    tag "Checking ${samplesheet} file"
     label 'process_single'
 
     conda "conda-forge::python=3.8.3"
