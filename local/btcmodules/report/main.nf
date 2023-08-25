@@ -12,7 +12,7 @@ process SCBTC_QCRENDER {
         path(qc_table_script)
 
     output:
-        path("${params.project_name}_project_metric_report.html")
+        path("project_metric_report.html")
     
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
@@ -32,11 +32,11 @@ process SCBTC_QCRENDER {
                 workdir = here
             ), 
             output_dir = here,
-            output_file = "${params.project_name}_project_metric_report.html")
+            output_file = "project_metric_report.html")
         """
     stub:
         """
-        touch ${params.project_name}_project_metric_report.html
+        touch project_metric_report.html
         """
 
 }
