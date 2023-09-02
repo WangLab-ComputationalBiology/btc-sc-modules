@@ -1,6 +1,6 @@
 process CELLRANGER_COUNT {
     tag "${sample}"
-    label 'process_medium'
+    label 'process_high'
 
     container "oandrefonseca/scaligners:main"
     publishDir "${params.outdir}/${params.project_name}/data/sample", mode: 'copy'

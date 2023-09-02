@@ -15,8 +15,8 @@ process SCBTC_STRATIFICATION {
     output:
         path("data/${params.project_name}_*_stratification_object.RDS"), emit: project_rds
         path("${params.project_name}_stratification_report.html")
-        path("data")
         path("figures/stratification")
+        path("data")
 
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
