@@ -22,7 +22,7 @@ process SCBTC_ANNOTATION {
         """
         #!/usr/bin/env Rscript
 
-        source("sctype_score.R")
+        source("${workflow.projectDir}/bin/sctype_score.R")
 
         # Getting run work directory
         here <- getwd()
