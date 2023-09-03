@@ -2,7 +2,7 @@ process SCBTC_STRATIFICATION {
     /* Description */
 
     tag "Running Cell Stratification"
-    label 'process_high'
+    label 'process_high_memory'
 
     container "oandrefonseca/scrpackages:main"
     publishDir "${params.outdir}/${params.project_name}", mode: 'copy'
