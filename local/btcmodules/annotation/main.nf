@@ -10,7 +10,8 @@ process SCBTC_ANNOTATION {
     input:
         path(project_object)
         path(annotation_script)
-        
+        path(annotation_database)
+
     output:
         path("data/${params.project_name}_annotation_object.RDS"), emit: project_rds
         path("${params.project_name}_annotation_report.html")
@@ -30,7 +31,7 @@ process SCBTC_ANNOTATION {
             params = list(
                 project_name = "${params.project_name}",
                 project_object = "${project_object}",
-                input_cell_markers_db = "${pipeline_directory}/${params.input_cell_markers_db}",
+                input_cell_markers_db = "${annotation_database}",
                 input_annotation_level = "${params.input_annotation_level}",
                 n_threads = ${task.cpus},
                 n_memory = ${n_memory},

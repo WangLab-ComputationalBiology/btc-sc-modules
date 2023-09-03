@@ -8,6 +8,7 @@ process SCBTC_METAPROGRAM {
     input:
         path(project_object)
         path(meta_script)
+        path(meta_programs_db)
         val(input_meta_step)
 
     output:
@@ -29,7 +30,7 @@ process SCBTC_METAPROGRAM {
             params = list(
                 project_name = "${params.project_name}",
                 project_object = "${project_object}",
-                input_meta_programs = "${pipeline_directory}/${params.input_meta_programs_db}",
+                input_meta_programs = "${meta_programs_db}",
                 input_cell_category = "${params.input_cell_category}",
                 input_heatmap_annotation = "${params.input_heatmap_annotation}",
                 input_meta_step = "${input_meta_step}",
