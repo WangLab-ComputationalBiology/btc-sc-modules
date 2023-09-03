@@ -10,7 +10,7 @@ process SCBTC_ANNOTATION {
     input:
         path(project_object)
         path(annotation_script)
-
+        
     output:
         path("data/${params.project_name}_annotation_object.RDS"), emit: project_rds
         path("${params.project_name}_annotation_report.html")
@@ -21,8 +21,6 @@ process SCBTC_ANNOTATION {
         def pipeline_directory = workflow.projectDir.toString().trim()
         """
         #!/usr/bin/env Rscript
-
-        source("${pipeline_directory}/notebook/sctype_score.R")
 
         # Getting run work directory
         here <- getwd()
