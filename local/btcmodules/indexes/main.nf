@@ -1,13 +1,12 @@
 process SCBTC_INDEX {
     
-    tag "Retrieving ${genome}"
+    tag "Saving ${genome}"
     label 'process_single'
 
-    container "oandrefonseca/scaligners:main"
     publishDir "${params.outdir}/${params.project_name}", mode: 'copy'
 
     input:
-        val(genome) // variable: GENOME
+        path(genome) // variable: GENOME
 
     output:
         path("indexes/${genome}"), emit: index
@@ -17,26 +16,22 @@ process SCBTC_INDEX {
         task.ext.when == null || task.ext.when
 
     script:
-        def indexes = ["GRCh38" : "https://www.dropbox.com/s/9bvocucv9qg5cn2/GRCh38.tar.gz?dl=0"]
         """
-        wget ${indexes[genome]} -O ${genome}.tar.gz
-        mkdir ./indexes 
-        tar -zxvf ${genome}.tar.gz -C ./indexes
-        rm -Rf ${genome}.tar.gz
+        mkdir ./indexes/
+        mv ${genome} ./indexes/
 
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
-            btcmodules: ${genome} ${indexes[genome]}
+            btcmodules: ${genome}
         END_VERSIONS
         """
     stub:
-        def indexes = ["GRCh38" : "https://www.dropbox.com/s/9bvocucv9qg5cn2/GRCh38.tar.gz?dl=0"]
         """
         mkdir -p ./indexes/${genome}
         
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":
-            btcmodules: ${genome} ${indexes[genome]}
+            btcmodules: ${genome}
         END_VERSIONS
         """
 }
