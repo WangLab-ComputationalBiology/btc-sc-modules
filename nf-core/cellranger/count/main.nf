@@ -18,13 +18,12 @@ process CELLRANGER_COUNT {
 
     script:
         def args = task.ext.args ?: ''
-        def reference_name = reference.name
         """
             cellranger \\
                 count \\
                 --id="${sample}" \\
                 --fastqs=. \\
-                --transcriptome="${reference_name}" \\
+                --transcriptome="${reference.name}" \\
                 --sample="${sample}" \\
                 --localcores=${task.cpus} \\
                 --localmem=${task.memory.toGiga()}
