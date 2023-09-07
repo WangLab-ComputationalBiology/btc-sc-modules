@@ -1,5 +1,5 @@
-process SAMPLESHEET_CHECK {
-    tag "$samplesheet"
+process METADATA_CHECK {
+    tag "$meta_data"
     label 'process_single'
 
     conda "conda-forge::python=3.8.3"
@@ -8,7 +8,7 @@ process SAMPLESHEET_CHECK {
         'quay.io/biocontainers/python:3.8.3' }"
 
     input:
-        path samplesheet
+        path meta_data
 
     output:
         path '*.csv'       , emit: csv
@@ -19,7 +19,7 @@ process SAMPLESHEET_CHECK {
 
     script:
         """
-        cp ${samplesheet} samplesheet.valid.csv
+        cp ${meta_data} metadata.valid.csv
 
         cat <<-END_VERSIONS > versions.yml
         "${task.process}":

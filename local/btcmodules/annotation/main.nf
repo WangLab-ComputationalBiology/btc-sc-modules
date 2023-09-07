@@ -15,7 +15,7 @@ process SCBTC_ANNOTATION {
     output:
         path("data/${params.project_name}_annotation_object.RDS"), emit: project_rds
         path("${params.project_name}_annotation_report.html")
-        path("${annotation_db}")
+        path("data/${annotation_db}")
         path("figures/annotation")
 
     script:
