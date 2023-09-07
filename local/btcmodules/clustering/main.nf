@@ -7,6 +7,7 @@ process SCBTC_CLUSTERING {
     
     input:
         path(project_object)
+        path(integration_method)
         path(cluster_script)
         val(input_cluster_step)
 

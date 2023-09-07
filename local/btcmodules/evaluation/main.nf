@@ -13,7 +13,7 @@ process SCBTC_EVALUATION {
         val(input_batch_step)
 
     output:
-        path("data/batch_method.selected.txt"), emit: best_method
+        path("data/batch_method.selected.txt"), emit: integration_method
         path("data/${params.project_name}_evaluation_table.RDS")
         path("${params.project_name}_evaluation_report.html")
         path("figures/evaluation")
