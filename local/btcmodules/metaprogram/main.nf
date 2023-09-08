@@ -14,7 +14,7 @@ process SCBTC_METAPROGRAM {
     output:
         path("data/${params.project_name}_${input_meta_step}_meta_object.RDS"), emit: project_rds
         path("${params.project_name}_${input_meta_step}_meta_report.html")
-        path("data/${meta_programs_db}")
+        path("data/meta_programs_db.tsv")
         path("figures/meta")
 
     script:
@@ -41,6 +41,7 @@ process SCBTC_METAPROGRAM {
             ), 
             output_dir = here,
             output_file = "${params.project_name}_${input_meta_step}_meta_report.html")
+
         """
     stub:
         """

@@ -15,7 +15,7 @@ process SCBTC_ANNOTATION {
     output:
         path("data/${params.project_name}_annotation_object.RDS"), emit: project_rds
         path("${params.project_name}_annotation_report.html")
-        path("data/${annotation_db}")
+        path("data/cell_markers_database.tsv")
         path("figures/annotation")
 
     script:
@@ -41,7 +41,6 @@ process SCBTC_ANNOTATION {
             output_dir = here,
             output_file = "${params.project_name}_annotation_report.html"
             )           
-
         """
     stub:
         """
