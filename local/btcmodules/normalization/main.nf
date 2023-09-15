@@ -14,6 +14,7 @@ process SCBTC_NORMALIZATION {
         path("data/${params.project_name}_${input_reduction_step}_reduction_object.RDS"), emit: project_rds
         path("${params.project_name}_${input_reduction_step}_reduction_object.html")
         path("figures/reduction")
+        path(".dummy"), emit: dummy
 
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
