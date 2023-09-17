@@ -3,7 +3,7 @@ process SCBTC_INDEX {
     tag "Saving ${genome}"
     label 'process_single'
 
-    container 'oandrefonseca/scrbase:main'
+    container 'oandrefonseca/scrpackages:main'
     publishDir "${params.outdir}/${params.project_name}", mode: 'copy'
 
     input:
