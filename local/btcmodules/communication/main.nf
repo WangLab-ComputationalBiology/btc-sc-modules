@@ -24,7 +24,7 @@ process SCBTC_COMMUNICATION {
         here <- getwd()
 
         # Rendering Rmarkdown script
-        rmarkdown::render("${cluster_script}",
+        rmarkdown::render("${communication_script}",
             params = list(
                 project_name = "${params.project_name}",
                 project_object = "${project_object}",
