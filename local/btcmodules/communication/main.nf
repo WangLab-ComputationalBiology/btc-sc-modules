@@ -31,8 +31,6 @@ process SCBTC_COMMUNICATION {
                 input_source_groups = "${params.input_source_groups}",
                 input_target_groups = "${params.input_target_groups}",
                 input_cellchat_annotation = "${params.input_cellchat_annotation}",
-                thr_resolution = ${params.thr_resolution},
-                thr_proportion = ${params.thr_proportion},
                 n_threads = ${task.cpus},
                 n_memory = ${n_memory},
                 workdir = here
