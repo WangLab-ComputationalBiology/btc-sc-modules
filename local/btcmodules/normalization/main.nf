@@ -45,6 +45,7 @@ process SCBTC_NORMALIZATION {
         touch data/${params.project_name}_${input_reduction_step}_reduction_object.RDS
         touch ${params.project_name}_${input_reduction_step}_reduction_object.html
 
+        touch .dummy
         touch figures/reduction/EMPTY
         """
 }

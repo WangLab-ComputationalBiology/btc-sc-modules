@@ -43,6 +43,7 @@ process SCBTC_MERGE {
         touch data/${params.project_name}_merged_object.RDS
         touch ${params.project_name}_merged_report.html
 
+        touch .dummy
         touch figures/merge/EMPTY.pdf
 
         """
