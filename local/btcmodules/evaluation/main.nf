@@ -32,6 +32,7 @@ process SCBTC_EVALUATION {
                 project_name = "${params.project_name}",
                 project_object = "${project_object}",
                 input_batch_step = "${input_batch_step}",
+                input_integration_evaluate = "${params.input_integration_evaluate}",
                 input_target_variables = "${params.input_target_variables}",
                 input_lisi_variables = "${params.input_lisi_variables}",
                 input_auto_selection = "${params.input_auto_selection}",
