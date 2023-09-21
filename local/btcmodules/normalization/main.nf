@@ -16,6 +16,12 @@ process SCBTC_NORMALIZATION {
         path("figures/reduction")
         path(".dummy"), emit: dummy
 
+    when:
+        task.ext.when == null || task.ext.when
+        
+    when:
+        task.ext.when == null || task.ext.when
+        
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
         """

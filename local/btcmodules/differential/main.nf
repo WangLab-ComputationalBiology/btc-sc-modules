@@ -15,6 +15,9 @@ process SCBTC_DIFFERENTIAL {
         path("${params.project_name}_${input_deg_step}_deg_report.html")
         path("figures/deg")
 
+    when:
+        task.ext.when == null || task.ext.when
+
     script:
        def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
        """

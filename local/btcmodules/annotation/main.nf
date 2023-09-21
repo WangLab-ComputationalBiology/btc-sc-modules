@@ -48,6 +48,7 @@ process SCBTC_ANNOTATION {
         
         touch data/${params.project_name}_annotation_object.RDS
         touch ${params.project_name}_annotation_report.html
+        touch data/cell_markers_database.tsv
 
         touch figures/annotation/EMPTY
         """

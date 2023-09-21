@@ -15,6 +15,9 @@ process SCBTC_MERGE {
         path("figures/merge")
         path(".dummy"), emit: dummy
 
+    when:
+        task.ext.when == null || task.ext.when
+        
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
 

@@ -18,6 +18,9 @@ process SCBTC_STRATIFICATION {
         path("figures/stratification")
         path("data")
 
+    when:
+        task.ext.when == null || task.ext.when
+        
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
         """

@@ -16,6 +16,9 @@ process SCBTC_CLUSTERING {
         path("${params.project_name}_${input_cluster_step}_cluster_report.html")
         path("figures/clustering")
 
+    when:
+        task.ext.when == null || task.ext.when
+        
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
         """

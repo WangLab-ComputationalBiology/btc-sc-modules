@@ -15,6 +15,9 @@ process SCBTC_DOUBLET {
         path("${params.project_name}_${input_doublet_name}_doublet_report.html")
         path("figures/doublet")
 
+    when:
+        task.ext.when == null || task.ext.when
+        
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
         """

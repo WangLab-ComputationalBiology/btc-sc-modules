@@ -49,7 +49,8 @@ process SCBTC_METAPROGRAM {
 
         touch data/${params.project_name}_${input_meta_step}_meta_object.RDS
         touch ${params.project_name}_${input_meta_step}_meta_report.html
-
+        touch data/meta_programs_db.tsv
+        
         touch figures/meta/EMPTY
         """
 }

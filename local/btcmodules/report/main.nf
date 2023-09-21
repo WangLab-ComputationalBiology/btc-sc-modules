@@ -13,7 +13,10 @@ process SCBTC_QCRENDER {
 
     output:
         path("${params.project_name}_project_metric_report.html")
-    
+
+    when:
+        task.ext.when == null || task.ext.when
+            
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
         """
