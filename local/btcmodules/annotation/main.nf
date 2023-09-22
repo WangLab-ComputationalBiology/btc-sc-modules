@@ -1,6 +1,5 @@
 process SCBTC_ANNOTATION {
     /* Description */
-
     tag "Cell annotation"
     label 'process_high'
 
