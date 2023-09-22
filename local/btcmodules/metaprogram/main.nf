@@ -19,7 +19,6 @@ process SCBTC_METAPROGRAM {
 
     script:
         def n_memory = task.memory.toString().replaceAll(/[^0-9]/, '') as int
-        def pipeline_directory = workflow.projectDir.toString().trim()
         """
         #!/usr/bin/env Rscript
 
