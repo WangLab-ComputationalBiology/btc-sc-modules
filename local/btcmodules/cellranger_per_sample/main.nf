@@ -1,4 +1,4 @@
-process CELLRANGER_PERSAMPLE{
+process CELLRANGER_PER_SAMPLE{
     time '96h'
     cpus 16
     memory '12 GB'
@@ -14,13 +14,11 @@ process CELLRANGER_PERSAMPLE{
             val(tcr_id),
             path(bcr_fastq, stageAs: "?/BCR/*"),
             val(bcr_id),
-            path(cite_fastq, stageAs: "?/CITE/*"),
-            val(cite_id),
+            path(cite_hto_fastq, stageAs: "?/CITE/*"),
+            val(cite_hto_id),
             path(meta_yaml),
             path(reference),
-            path(vdj_reference),
-            val(jobmode),
-            val(numcores)
+            path(vdj_reference)
         )
     output:
         path("${sample_id}"), emit: output
@@ -29,10 +27,10 @@ process CELLRANGER_PERSAMPLE{
         def bcr_id_opt = bcr_id != 'NODATA' ? " --bcr_id ${bcr_id}" : ''
         def tcr_fastq_opt = tcr_id != 'NODATA' ? " --tcr_fastq ${tcr_fastq}" : ''
         def tcr_id_opt = tcr_id != 'NODATA' ? " --tcr_id ${tcr_id}" : ''
-        def cite_fastq_opt = cite_id != 'NODATA' ? " --cite_fastq ${cite_fastq}" : ''
-        def cite_id_opt = cite_id != 'NODATA' ? " --cite_id ${cite_id}" : ''
+        def cite_hto_fastq_opt = cite_hto_id != 'NODATA' ? " --cite_hto_fastq ${cite_hto_fastq}" : ''
+        def cite_hto_id_opt = cite_hto_id != 'NODATA' ? " --cite_hto_id ${cite_hto_id}" : ''
         """
-            cellranger_utils  cellranger-multi-vdj \
+            cellranger_utils  cellranger-persample \
             --reference $reference \
             --vdj_reference $vdj_reference \
             --gex_fastq $gex_fastq \
@@ -42,13 +40,11 @@ process CELLRANGER_PERSAMPLE{
             --meta_yaml $meta_yaml \
             --tempdir temp \
             --sample_id $sample_id \
-            --numcores $numcores \
+            --numcores ${task.cpus} \
             --mempercore 10 \
-            --jobmode $jobmode \
-            --maxjobs 2000 \
             $bcr_fastq_opt $bcr_id_opt \
             $tcr_fastq_opt $tcr_id_opt \
-            $cite_fastq_opt $cite_id_opt \
+            $cite_hto_fastq_opt $cite_hto_id_opt
         """
     stub:
         """
